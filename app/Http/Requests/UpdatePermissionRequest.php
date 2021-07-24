@@ -7,7 +7,6 @@ use App\Models\Permission;
 
 class UpdatePermissionRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +25,8 @@ class UpdatePermissionRequest extends FormRequest
     public function rules()
     {
         $rules = Permission::$rules;
-        
+        $id =  request()->segments()[2];
+        $rules['name'] = $rules['name'] . ',' . $id;
         return $rules;
     }
 }

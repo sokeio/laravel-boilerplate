@@ -48,15 +48,32 @@ class PermissionDataTable extends DataTable
                 'stateSave' => false,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
+
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    [
+                        'text' => '<i class="fas fa-shield-alt"></i> ' . 'Load from router',
+                        'action' => "
+                        function (e, dt, button, config) {
+                            $.ajax({
+                                type:'POST',
+                                url:'" . route('permissions.load-router') . "',
+                                headers: {'X-CSRF-TOKEN': $('meta[name=\"csrf-token\"]').attr('content')},
+                                success:function(data){
+                                    dt.search('');
+                                    dt.columns().search('');
+                                    dt.draw();
+                                }
+                             });
+                        }",
+                        'className' => 'btn btn-default btn-sm no-corner'
+                    ],
                 ],
             ]);
     }
-
+    protected $actions = ['create', 'export', 'print', 'reset', 'loadPermission'];
     /**
      * Get columns.
      *
@@ -82,5 +99,8 @@ class PermissionDataTable extends DataTable
     protected function filename()
     {
         return 'permissions_datatable_' . time();
+    }
+    public function loadPermission()
+    {
     }
 }

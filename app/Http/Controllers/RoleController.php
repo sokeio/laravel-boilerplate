@@ -7,18 +7,23 @@ use App\Http\Requests;
 use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Repositories\RoleRepository;
+use App\Repositories\PermissionRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
 class RoleController extends AppBaseController
 {
+    /** @var  PermissionRepository */
+    private $permissionRepository;
+
     /** @var  RoleRepository */
     private $roleRepository;
 
-    public function __construct(RoleRepository $roleRepo)
+    public function __construct(RoleRepository $roleRepo, PermissionRepository $permissionRepo)
     {
         $this->roleRepository = $roleRepo;
+        $this->permissionRepository = $permissionRepo;
     }
 
     /**
@@ -39,7 +44,8 @@ class RoleController extends AppBaseController
      */
     public function create()
     {
-        return view('roles.create');
+        $allPermission = $this->permissionRepository->all();
+        return view('roles.create')->with('allPermission', $allPermission);
     }
 
     /**
@@ -51,6 +57,7 @@ class RoleController extends AppBaseController
      */
     public function store(CreateRoleRequest $request)
     {
+
         $input = $request->all();
 
         $role = $this->roleRepository->create($input);
@@ -77,7 +84,8 @@ class RoleController extends AppBaseController
             return redirect(route('roles.index'));
         }
 
-        return view('roles.show')->with('role', $role);
+        $allPermission = $this->permissionRepository->all();
+        return view('roles.show')->with('role', $role)->with('allPermission', $allPermission);
     }
 
     /**
@@ -97,7 +105,9 @@ class RoleController extends AppBaseController
             return redirect(route('roles.index'));
         }
 
-        return view('roles.edit')->with('role', $role);
+        $allPermission = $this->permissionRepository->all();
+
+        return view('roles.edit')->with('role', $role)->with('allPermission', $allPermission);
     }
 
     /**
@@ -117,9 +127,9 @@ class RoleController extends AppBaseController
 
             return redirect(route('roles.index'));
         }
-
+        $permission_data = $request->get('permission_data');
         $role = $this->roleRepository->update($request->all(), $id);
-
+        $role->syncPermissions($permission_data);
         Flash::success('Role updated successfully.');
 
         return redirect(route('roles.index'));

@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'dashboard'=>'Dashboard',
     'user' => [
         'title'=>'Security',
         'users' => 'Users',

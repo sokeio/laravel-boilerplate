@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Spatie\Permission\Models\Role as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -19,10 +19,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Role extends Model
 {
     use SoftDeletes;
-
+    public const SUPPER_ADMIN = "supper-admin";
 
     public $table = 'roles';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -53,8 +53,17 @@ class Role extends Model
      * @var array
      */
     public static $rules = [
-        
+        'name' => 'required|max:255|unique:roles,name'
     ];
 
-    
+    protected $appends = array('permission_data', 'check_supper_admin');
+    public function getPermissionDataAttribute()
+    {
+        return $this->permissions->pluck('id', 'id');
+    }
+
+    public function getCheckSupperAdminAttribute()
+    {
+        return $this->name == Role::SUPPER_ADMIN;
+    }
 }

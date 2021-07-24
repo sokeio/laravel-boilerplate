@@ -13,6 +13,7 @@ return [
     |
     */
     'module' => [
+        'dashboard' => 'Dashboard',
         'home' => 'Home',
         'users' => 'User',
         'roles' => 'Role',

@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Spatie\Permission\Models\Permission as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 
 /**
  * Class Permission
@@ -56,8 +55,6 @@ class Permission extends Model
      * @var array
      */
     public static $rules = [
-
+        'name' => 'required|max:255|unique:permissions,name'
     ];
-
-
 }

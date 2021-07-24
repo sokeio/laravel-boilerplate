@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Route;
 use App\DataTables\PermissionDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreatePermissionRequest;
@@ -147,5 +148,10 @@ class PermissionController extends AppBaseController
         Flash::success('Permission deleted successfully.');
 
         return redirect(route('permissions.index'));
+    }
+    public function LoadPermission()
+    {
+        \Artisan::call('router:permission');
+        return "OK";
     }
 }

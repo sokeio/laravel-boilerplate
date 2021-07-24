@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Role;
+use App\Models\User;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class RoleDataTable extends DataTable
+class UserDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class RoleDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'roles.datatables_actions');
+        return $dataTable->addColumn('action', 'users.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Role $model
+     * @param \App\Models\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Role $model)
+    public function query(User $model)
     {
         return $model->newQuery();
     }
@@ -48,6 +48,7 @@ class RoleDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -66,9 +67,7 @@ class RoleDataTable extends DataTable
         return [
             'id' => ['searchable' => false],
             'name',
-            'title',
-            'guard_name',
-            'description'
+            'email'
         ];
     }
 
@@ -79,6 +78,6 @@ class RoleDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'roles_datatable_' . time();
+        return 'users_datatable_' . time();
     }
 }

@@ -88,7 +88,7 @@ abstract class BaseRepository
         $query = $this->model->newQuery();
 
         if (count($search)) {
-            foreach($search as $key => $value) {
+            foreach ($search as $key => $value) {
                 if (in_array($key, $this->getFieldsSearchable())) {
                     $query->where($key, $value);
                 }
@@ -189,5 +189,10 @@ abstract class BaseRepository
         $model = $query->findOrFail($id);
 
         return $model->delete();
+    }
+    public function count()
+    {
+        $query = $this->model->newQuery();
+        return $query->count();
     }
 }

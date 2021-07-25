@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
+use App\Repositories\RoleRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -15,10 +16,13 @@ class UserController extends AppBaseController
 {
     /** @var  UserRepository */
     private $userRepository;
+    /** @var  RoleRepository */
+    private $roleRepository;
 
-    public function __construct(UserRepository $userRepo)
+    public function __construct(RoleRepository $roleRepo, UserRepository $userRepo)
     {
         $this->userRepository = $userRepo;
+        $this->roleRepository = $roleRepo;
     }
 
     /**
@@ -39,7 +43,7 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        return view('users.create');
+        return view('users.create')->with('roles', $this->roleRepository->all()->pluck('name', 'id'));
     }
 
     /**
@@ -55,6 +59,8 @@ class UserController extends AppBaseController
 
         $user = $this->userRepository->create($input);
 
+        $role_data = $request->get('role_data');
+        $user->syncRoles($role_data);
         Flash::success('User saved successfully.');
 
         return redirect(route('users.index'));
@@ -97,7 +103,7 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        return view('users.edit')->with('user', $user)->with('roles', $this->roleRepository->all()->pluck('name', 'id'));
     }
 
     /**
@@ -119,7 +125,8 @@ class UserController extends AppBaseController
         }
 
         $user = $this->userRepository->update($request->all(), $id);
-
+        $role_data = $request->get('role_data');
+        $user->syncRoles($role_data);
         Flash::success('User updated successfully.');
 
         return redirect(route('users.index'));

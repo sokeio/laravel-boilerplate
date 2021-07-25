@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class User extends Authenticatable
 {
-    use SoftDeletes, HasRoles,HasPermissions, HasFactory, Notifiable;
+    use SoftDeletes, HasRoles, HasPermissions, HasFactory, Notifiable;
 
 
     public $table = 'users';
@@ -45,7 +45,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    public static $rules = [];
+    public static $rules = [
+        'email' => 'required|max:255|unique:users,email',
+        'password' => 'required'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -68,5 +71,10 @@ class User extends Authenticatable
     public function isSuperAdmin()
     {
         return $this->hasRole(Role::SUPPER_ADMIN);
+    }
+    protected $appends = array('role_data');
+    public function getRoleDataAttribute()
+    {
+        return $this->roles->pluck('id', 'name');
     }
 }

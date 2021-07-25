@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         Gate::before(function ($user, $ability) {
-            if ($user->hasRole(Role::SUPPER_ADMIN))
+            if ($user->isSuperAdmin())
                 return true;
             $perrmissions = explode('|', $ability);
             foreach ($perrmissions as $item) {

@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\HasPermissions;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -21,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class User extends Authenticatable
 {
-    use SoftDeletes, HasRoles, HasFactory, Notifiable;
+    use SoftDeletes, HasRoles,HasPermissions, HasFactory, Notifiable;
 
 
     public $table = 'users';

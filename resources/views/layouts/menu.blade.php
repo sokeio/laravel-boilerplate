@@ -8,7 +8,7 @@ $isDashboardActive = Request::is($urlAdmin);
         <p>@lang('menu.dashboard')</p>
     </a>
 </li>
-@can(['users.index','roles.index','permissions.index'])
+@can('users.index|roles.index|permissions.index')
 @php
 $isUserActive = Request::is($urlAdmin.'*users*');
 $isRoleActive = Request::is($urlAdmin.'*roles*');
@@ -23,7 +23,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
         </p>
     </a>
     <ul class="nav nav-treeview">
-        @can('users*')
+        @can('users.index')
         <li class="nav-item">
             <a href="{{ route('users.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
                 <i class="nav-icon fas fa-users"></i>
@@ -33,7 +33,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
             </a>
         </li>
         @endcan
-        @can('roles.*')
+        @can('roles.index')
         <li class="nav-item">
             <a href="{{ route('roles.index') }}" class="nav-link {{ $isRoleActive ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user-shield"></i>
@@ -43,7 +43,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
             </a>
         </li>
         @endcan
-        @can('permissions.*')
+        @can('permissions.index')
         <li class="nav-item ">
             <a href="{{ route('permissions.index') }}" class="nav-link {{ $isPermissionActive ? 'active' : '' }}">
                 <i class="nav-icon fas fa-shield-alt"></i>

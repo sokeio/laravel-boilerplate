@@ -28,8 +28,14 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         Gate::before(function ($user, $ability) {
-            return $user->hasRole(Role::SUPPER_ADMIN) ? true : null;
+            if ($user->hasRole(Role::SUPPER_ADMIN))
+                return true;
+            $perrmissions = explode('|', $ability);
+            foreach ($perrmissions as $item) {
+                if ($user->hasPermissionTo($item))
+                    return true;
+            }
+            return null;
         });
-        //
     }
 }

@@ -11,4 +11,6 @@ Route::post('permissions/loadFromRouter', [App\Http\Controllers\PermissionContro
 
 Route::resource('roles', App\Http\Controllers\RoleController::class);
 
+Route::get('users/profile', [App\Http\Controllers\UserController::class, 'showProfile'])->name('users.profile');
 Route::resource('users', App\Http\Controllers\UserController::class);
+

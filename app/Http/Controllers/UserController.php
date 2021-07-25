@@ -155,4 +155,9 @@ class UserController extends AppBaseController
 
         return redirect(route('users.index'));
     }
+    public function showProfile()
+    {
+        $user = auth()->user();
+        return view('users.profile')->with('user', $user);
+    }
 }

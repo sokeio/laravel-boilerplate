@@ -17,6 +17,7 @@ Following things are ready to be used directly with AdminLTE Theme.
 - AdminLTE Templates
 - Laravel UI
 - Laravel Collective
+- Spatie/laravel-permission
 
 ## Usage
 
@@ -29,5 +30,6 @@ Following things are ready to be used directly with AdminLTE Theme.
 7. Login account:
 - Supper Admin: admin@fastlaravel.dev/123@12
 - Guest: guest@fastlaravel.dev/123@123
+- Leader: leader@fastlaravel.dev/123@123
 
 Once everything is installed, you are ready to go with generator.

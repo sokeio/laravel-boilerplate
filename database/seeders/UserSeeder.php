@@ -33,31 +33,50 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        Artisan::call('config:clear');
         $exitCode = Artisan::call('router:permission');
-        //
+
+        // Supper Admin
         $roleSupperAdmin = $this->roleRepository->create([
             'name' =>    Role::SUPPER_ADMIN,
             'title' => 'Supper Admin',
             'guard_name' => 'web'
         ]);
+
+        $userSupperAdmin = $this->userRepository->create([
+            'name' => 'Administrator',
+            'email' => 'admin@fastlaravel.dev',
+            'password' => Hash::make('123@12'),
+        ]);
+        $userSupperAdmin->assignRole($roleSupperAdmin);
+
+        // Guest
         $roleGuest = $this->roleRepository->create([
             'name' =>    Role::GUEST,
             'title' => 'Guest',
             'guard_name' => 'web'
         ]);
         $roleGuest->givePermissionTo('dashboard');
-        $userSupperAdmin = $this->userRepository->create([
-            'name' => 'Administrator',
-            'email' => 'admin@fastlaravel.dev',
-            'password' => Hash::make('123@12'),
-        ]);
         $userGuest = $this->userRepository->create([
-            'name' => 'Administrator',
+            'name' => 'Guest',
             'email' => 'guest@fastlaravel.dev',
             'password' => Hash::make('123@123'),
         ]);
-
-        $userSupperAdmin->assignRole($roleSupperAdmin);
         $userGuest->assignRole($roleGuest);
+        // Leader
+        $roleLeader = $this->roleRepository->create([
+            'name' =>    'leader',
+            'title' => 'Leader',
+            'guard_name' => 'web'
+        ]);
+        $usersPermissions = $this->permissionRepository->getListByName('users.%');
+        $roleLeader->givePermissionTo($usersPermissions);
+        $roleLeader->givePermissionTo('dashboard');
+        $userLeader = $this->userRepository->create([
+            'name' => 'Leader',
+            'email' => 'leader@fastlaravel.dev',
+            'password' => Hash::make('123@123'),
+        ]);
+        $userLeader->assignRole($roleLeader);
     }
 }

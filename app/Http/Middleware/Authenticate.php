@@ -22,13 +22,13 @@ class Authenticate extends Middleware
     public function handle($request, Closure $next, ...$guards)
     {
         /** @var \App\User $user */
-       // $user = $request->user();
+        $user = $request->user();
         // Like: users.index
-        //$route = app()->router->getCurrentRoute()->getName();
+        $route = app()->router->getCurrentRoute()->getName();
         // Hasn't permission
-       // if (!empty($user) && !$user->isSuperAdmin() && !empty($route) && !$user->hasPermissionTo($route)) {
-        //    return abort(403);
-        //}
+        if (!empty($user) && !$user->isSuperAdmin() && !empty($route) && !$user->hasPermissionTo($route)) {
+            return abort(403);
+        }
 
         return parent::handle($request, $next, $guards);
     }

@@ -9,7 +9,7 @@ use App\Repositories\BaseRepository;
  * Class PermissionRepository
  * @package App\Repositories
  * @version July 23, 2021, 4:50 pm UTC
-*/
+ */
 
 class PermissionRepository extends BaseRepository
 {
@@ -41,10 +41,17 @@ class PermissionRepository extends BaseRepository
     {
         return Permission::class;
     }
-    public function checkExists($name,$guard_name){
+    public function checkExists($name, $guard_name)
+    {
         return $this->allQuery([
-            'name'=>$name,
-            'guard_name'=>$guard_name
-        ])->count()>0;
+            'name' => $name,
+            'guard_name' => $guard_name
+        ])->count() > 0;
+    }
+    public function getListByName($name, $guard_name = 'web')
+    {
+        return $this->allQuery([
+            'guard_name' => $guard_name
+        ])->where('name', 'like', $name)->get();
     }
 }

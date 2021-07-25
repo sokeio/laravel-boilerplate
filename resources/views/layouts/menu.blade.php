@@ -1,8 +1,6 @@
 @php
-$isDashboardActive = Request::is(config('fast.admin_prefix'));
-$isUserActive = Request::is(config('fast.admin_prefix').'*users*');
-$isRoleActive = Request::is(config('fast.admin_prefix').'*roles*');
-$isPermissionActive = Request::is(config('fast.admin_prefix').'*permissions*');
+$urlAdmin=config('fast.admin_prefix');
+$isDashboardActive = Request::is($urlAdmin);
 @endphp
 <li class="nav-item">
     <a href="{{ route('dashboard') }}" class="nav-link {{ $isDashboardActive ? 'active' : '' }}">
@@ -10,7 +8,12 @@ $isPermissionActive = Request::is(config('fast.admin_prefix').'*permissions*');
         <p>@lang('menu.dashboard')</p>
     </a>
 </li>
-
+@can(['users.index','roles.index','permissions.index'])
+@php
+$isUserActive = Request::is($urlAdmin.'*users*');
+$isRoleActive = Request::is($urlAdmin.'*roles*');
+$isPermissionActive = Request::is($urlAdmin.'*permissions*');
+@endphp
 <li class="nav-item {{($isUserActive||$isRoleActive||$isPermissionActive)?'menu-open':''}} ">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-shield-virus"></i>
@@ -20,6 +23,7 @@ $isPermissionActive = Request::is(config('fast.admin_prefix').'*permissions*');
         </p>
     </a>
     <ul class="nav nav-treeview">
+        @can('users*')
         <li class="nav-item">
             <a href="{{ route('users.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
                 <i class="nav-icon fas fa-users"></i>
@@ -28,6 +32,8 @@ $isPermissionActive = Request::is(config('fast.admin_prefix').'*permissions*');
                 </p>
             </a>
         </li>
+        @endcan
+        @can('roles.*')
         <li class="nav-item">
             <a href="{{ route('roles.index') }}" class="nav-link {{ $isRoleActive ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user-shield"></i>
@@ -36,6 +42,8 @@ $isPermissionActive = Request::is(config('fast.admin_prefix').'*permissions*');
                 </p>
             </a>
         </li>
+        @endcan
+        @can('permissions.*')
         <li class="nav-item ">
             <a href="{{ route('permissions.index') }}" class="nav-link {{ $isPermissionActive ? 'active' : '' }}">
                 <i class="nav-icon fas fa-shield-alt"></i>
@@ -44,5 +52,7 @@ $isPermissionActive = Request::is(config('fast.admin_prefix').'*permissions*');
                 </p>
             </a>
         </li>
+        @endcan
     </ul>
 </li>
+@endcan

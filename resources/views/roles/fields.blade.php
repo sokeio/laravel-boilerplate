@@ -29,7 +29,7 @@
 
 </div>
 
-<!-- Description Field -->
+<!-- Permission Field -->
 <div class="form-group col-sm-12 col-lg-4 ">
     @php
     $groupPermission = $allPermission->groupBy('module');

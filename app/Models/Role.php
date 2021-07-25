@@ -20,6 +20,7 @@ class Role extends Model
 {
     use SoftDeletes;
     public const SUPPER_ADMIN = "supper-admin";
+    public const GUEST = "guest";
 
     public $table = 'roles';
 

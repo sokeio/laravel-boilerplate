@@ -72,9 +72,13 @@ class User extends Authenticatable
     {
         return $this->hasRole(Role::SUPPER_ADMIN);
     }
-    protected $appends = array('role_data');
+    protected $appends = array('role_data', 'role_text');
     public function getRoleDataAttribute()
     {
         return $this->roles->pluck('id', 'name');
+    }
+    public function getRoleTextAttribute()
+    {
+        return $this->roles->pluck('name')->implode(',');
     }
 }

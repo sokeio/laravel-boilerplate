@@ -45,7 +45,7 @@ class UserDataTable extends DataTable
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
-                'stateSave' => true,
+                'stateSave' => false,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -59,7 +59,7 @@ class UserDataTable extends DataTable
 
     /**
      * Get columns.
-     *
+     * new Column(['title' => __('users.fields.position_name'), 'data' => 'position_name', 'orderable' => false, 'searchable' => false]),
      * @return array
      */
     protected function getColumns()
@@ -67,7 +67,8 @@ class UserDataTable extends DataTable
         return [
             'id' => ['searchable' => false],
             'name',
-            'email'
+            'email',
+            'role_text' => ['orderable' => false, 'searchable' => false],
         ];
     }
 

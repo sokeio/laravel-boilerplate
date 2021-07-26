@@ -1,5 +1,9 @@
 @php
 $urlAdmin=config('fast.admin_prefix');
+@endphp
+
+@can('dashboard')
+@php
 $isDashboardActive = Request::is($urlAdmin);
 @endphp
 <li class="nav-item">
@@ -8,6 +12,22 @@ $isDashboardActive = Request::is($urlAdmin);
         <p>@lang('menu.dashboard')</p>
     </a>
 </li>
+@endcan
+
+@can('attendances.index')
+@php
+$isUserActive = Request::is($urlAdmin.'*attendances*');
+@endphp
+
+<li class="nav-item">
+    <a href="{{ route('attendances.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
+        <i class="nav-icon fas fa-calendar-alt"></i>
+
+        <p>@lang('menu.attendances.title')</p>
+    </a>
+</li>
+@endcan
+
 @can('users.index|roles.index|permissions.index')
 @php
 $isUserActive = Request::is($urlAdmin.'*users*');
@@ -54,18 +74,5 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
         </li>
         @endcan
     </ul>
-</li>
-@endcan
-@can('attendances.index')
-@php
-$isUserActive = Request::is($urlAdmin.'*attendances*');
-@endphp
-
-<li class="nav-item">
-    <a href="{{ route('attendances.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
-        <i class="nav-icon fas fa-calendar-alt"></i>
-
-        <p>@lang('menu.attendances.title')</p>
-    </a>
 </li>
 @endcan

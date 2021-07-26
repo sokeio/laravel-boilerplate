@@ -56,3 +56,16 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </ul>
 </li>
 @endcan
+@can('attendances.index')
+@php
+$isUserActive = Request::is($urlAdmin.'*attendances*');
+@endphp
+
+<li class="nav-item">
+    <a href="{{ route('attendances.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
+        <i class="nav-icon fas fa-calendar-alt"></i>
+
+        <p>@lang('menu.attendances.title')</p>
+    </a>
+</li>
+@endcan

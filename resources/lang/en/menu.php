@@ -18,6 +18,9 @@ return [
         'users' => 'Users',
         'roles' => 'Roles',
         'perrmissions' => 'Perrmissions'
+    ],
+    'attendances'=>[
+        'title'=>'Checkin/out'
     ]
 
 

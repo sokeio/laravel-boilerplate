@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\User;
+use App\Models\Attendance;
 
-class UpdateUserRequest extends FormRequest
+class CreateAttendanceRequest extends FormRequest
 {
 
     /**
@@ -25,11 +25,6 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = User::$rules;
-
-        $id =  $this->route('user');
-        $rules['email'] = $rules['email'] . ',' . $id;
-        unset($rules['password']);
-        return $rules;
+        return Attendance::$rules;
     }
 }

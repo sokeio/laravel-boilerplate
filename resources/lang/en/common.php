@@ -17,7 +17,8 @@ return [
         'home' => 'Home',
         'users' => 'User',
         'roles' => 'Role',
-        'permissions' => 'Permission'
+        'permissions' => 'Permission',
+        'attendances'=>'Checkin/out'
     ],
     'permission' => [
         'home' => 'Access Home Page',

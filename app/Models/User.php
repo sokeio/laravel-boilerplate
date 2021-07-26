@@ -72,7 +72,7 @@ class User extends Authenticatable
     {
         return $this->hasRole(Role::SUPPER_ADMIN);
     }
-    protected $appends = array('role_data', 'role_text');
+    protected $appends = array('role_data', 'role_text', 'status_online', 'is_online');
     public function getRoleDataAttribute()
     {
         return $this->roles->pluck('id', 'name');
@@ -80,5 +80,69 @@ class User extends Authenticatable
     public function getRoleTextAttribute()
     {
         return $this->roles->pluck('name')->implode(',');
+    }
+    public function getStatusOnlineAttribute()
+    {
+        return $this->is_online ? "online" : "";
+    }
+    public function getIsOnlineAttribute()
+    {
+        $checkTime = $this->freshTimestamp()->copy()->subMinutes(config('fast.time_checkout'));
+        return $this->hasMany(Attendance::class)->where('present', 1)->where('time_out', '>=', $checkTime)->exists();
+    }
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
+    public function checkIn()
+    {
+        $now = $this->freshTimestamp();
+        $attendances = $this->attendances()
+            ->where('day', $now->format('Y-m-d'))
+            ->where('present', 1)
+            ->first();
+        if ($attendances != null && $attendances->time_out > $now->copy()->subMinutes(config('fast.time_checkout'))) {
+            $attendances->update([
+                'time_out' => $now,
+                'present' => 1
+            ]);
+            return $attendances;
+        } else {
+            $this->attendances()
+                //->where('day', $now->format('Y-m-d'))
+                ->where('present', 1)->update([
+                    'present' => 0,
+                ]);
+        }
+
+        return $this->attendances()->create([
+            'day' => $now->format('Y-m-d'),
+            'time_in' => $now,
+            'ip' => request()->ip(),
+            'present' => 1
+        ]);
+    }
+
+    public function checkOut($present = 1)
+    {
+        $now = $this->freshTimestamp();
+        $date = request()->session()->get(config('fast.key_checkin'));
+        if ($date == null) {
+            $date = $now;
+        }
+        $attendances = $this->attendances()
+            ->where('day', $date->format('Y-m-d'))
+            ->where('present', 1)
+            ->where('ip', request()->ip())
+            //->whereNull('time_out')
+            ->first();
+        if ($attendances == null) {
+            $attendances = $this->checkIn();
+        }
+        return $attendances->update([
+            'time_out' => $now,
+            'present' => $present
+        ]);
     }
 }

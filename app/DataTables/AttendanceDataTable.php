@@ -2,11 +2,12 @@
 
 namespace App\DataTables;
 
+use App\Models\Attendance;
 use App\Models\User;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class UserDataTable extends DataTable
+class AttendanceDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -17,19 +18,18 @@ class UserDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-
-        return $dataTable->addColumn('action', 'users.datatables_actions');
+        return $dataTable->addColumn('action', 'attendances.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\User $model
+     * @param \App\Models\Attendance $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query(Attendance $model)
     {
-        return $model->newQuery()->with('Attendances');
+        return $model->newQuery()->with('user');
     }
 
     /**
@@ -45,7 +45,7 @@ class UserDataTable extends DataTable
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
-                'stateSave' => false,
+                'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -59,17 +59,19 @@ class UserDataTable extends DataTable
 
     /**
      * Get columns.
-     * new Column(['title' => __('users.fields.position_name'), 'data' => 'position_name', 'orderable' => false, 'searchable' => false]),
+     *
      * @return array
      */
     protected function getColumns()
     {
         return [
             'id' => ['searchable' => false],
-            'name',
-            'email',
-            'status_online'=>['data'=>'status_online','orderable' => false, 'searchable' => false],
-            'role_text' => ['orderable' => false, 'searchable' => false],
+            'ip',
+            'user_name' => ['data' => 'user_name', 'name' => 'user.name'],
+            'present',
+            'day' => ['data' => 'day_text', 'name' => 'day'],
+            'time_in',
+            'time_out'
         ];
     }
 
@@ -80,6 +82,6 @@ class UserDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'users_datatable_' . time();
+        return 'attendances_datatable_' . time();
     }
 }

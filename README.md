@@ -11,6 +11,7 @@ Following things are ready to be used directly with AdminLTE Theme.
 - User Manager
 - Role Manager
 - Permission Manager
+- Checkin/out User
 ## Packages Installed
 
 - InfyOm Laravel Generator

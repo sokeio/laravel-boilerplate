@@ -18,6 +18,7 @@ Following things are ready to be used directly with AdminLTE Theme.
 - Laravel UI
 - Laravel Collective
 - Spatie/laravel-permission
+- barryvdh/laravel-debugbar
 
 ## Usage
 

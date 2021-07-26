@@ -26,7 +26,7 @@ class UpdateRoleRequest extends FormRequest
     public function rules()
     {
         $rules = Role::$rules;
-        $id =  request()->segments()[2];
+        $id =  $this->route('role');
         $rules['name'] = $rules['name'] . ',' . $id;
         return $rules;
     }

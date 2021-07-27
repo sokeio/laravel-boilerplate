@@ -21,13 +21,14 @@ Following things are ready to be used directly with AdminLTE Theme.
 - Change password
 
 ## Packages Installed
-
+- Laravel 8.12
 - InfyOm Laravel Generator
 - AdminLTE Templates
 - Laravel UI
 - Laravel Collective
 - Spatie/laravel-permission
 - barryvdh/laravel-debugbar
+- yajra/laravel-datatables
 
 ## Usage
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use App\Repositories\RoleRepository;
 use App\Repositories\PermissionRepository;
+use App\Repositories\AttendanceRepository;
 
 class DashboardController extends Controller
 {
@@ -16,6 +17,8 @@ class DashboardController extends Controller
     private $roleRepository;
     /** @var  PermissionRepository */
     private $permissionRepository;
+    /** @var  AttendanceRepository */
+    private $attendanceRepository;
 
 
     /**
@@ -23,11 +26,12 @@ class DashboardController extends Controller
      *
      * @return void
      */
-    public function __construct(RoleRepository $roleRepo, UserRepository $userRepo, PermissionRepository $permissionRepo)
+    public function __construct(RoleRepository $roleRepo, UserRepository $userRepo, PermissionRepository $permissionRepo,AttendanceRepository $attendanceRepo)
     {
         $this->permissionRepository = $permissionRepo;
         $this->userRepository = $userRepo;
         $this->roleRepository = $roleRepo;
+        $this->attendanceRepository = $attendanceRepo;
     }
 
     /**
@@ -41,6 +45,7 @@ class DashboardController extends Controller
         $dashboardInfo['user_count'] =  $this->userRepository->count();
         $dashboardInfo['role_count'] =  $this->roleRepository->count();
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();
+        $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
         return view('dashboard.index')
             ->with(compact('dashboardInfo'));
     }

@@ -88,7 +88,7 @@ class User extends Authenticatable
     public function getIsOnlineAttribute()
     {
         $checkTime = $this->freshTimestamp()->copy()->subMinutes(config('fast.time_checkout'));
-        return $this->hasMany(Attendance::class)->where('present', 1)->where('time_out', '>=', $checkTime)->exists();
+        return $this->attendances()->where('present', 1)->where('time_out', '>=', $checkTime)->exists();
     }
     public function attendances()
     {

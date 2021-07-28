@@ -157,31 +157,29 @@
                     </div>
                 </div>
 
-
-                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="confirm-delete">
                     <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">Confirm Reset</h4>
-                            </div>
-
-                            <div class="modal-body">
-                                <p style="font-size: 16px">This will reset all of your fields. Do you want to
-                                    proceed?</p>
-
-                                <p class="debug-url"></p>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">No
-                                </button>
-                                <a id="btnModelReset" class="btn btn-flat btn-danger btn-ok" data-dismiss="modal">Yes</a>
-                            </div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Confirm Reset</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 16px">This will reset all of your fields. Do you want to proceed?</p>
+                            <p class="debug-url"></p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">No</button>
+                        <a class="btn btn-flat btn-danger btn-ok"  id="btnModelReset" data-dismiss="modal">Yes</a>
                         </div>
                     </div>
+                    <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
                 </div>
+                <!-- /.modal -->
 
             </form>
 

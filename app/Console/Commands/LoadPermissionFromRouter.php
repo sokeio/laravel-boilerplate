@@ -45,12 +45,6 @@ class LoadPermissionFromRouter extends Command
     {
         $arrExcept = [
             'ignition',
-            'io_generator_builder_generate_from_file',
-            'io_generator_builder_rollback',
-            'io_generator_builder_generate',
-            'io_relation_field_template',
-            'io_field_template',
-            'io_generator_builder',
             'login',
             'logout',
             'register',

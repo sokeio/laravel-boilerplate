@@ -39,7 +39,7 @@ Following things are ready to be used directly with AdminLTE Theme.
 3. Run `composer install`
 4. Generate application key by running `php artisan key:generate`
 5. Run `php artisan migrate --seed`
-6. Run `php artisan serv`
+6. Run `php artisan serve`
 7. Login account:
 - Supper Admin: admin@fastlaravel.dev/123@12
 - Guest: guest@fastlaravel.dev/123@123

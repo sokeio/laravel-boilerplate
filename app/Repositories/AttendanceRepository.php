@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Attendance;
 use App\Repositories\BaseRepository;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class AttendanceRepository
@@ -49,5 +50,19 @@ class AttendanceRepository extends BaseRepository
         $query = $this->allQuery();
 
         return $query->where('present', 1)->where('time_out', '>=', $checkTime)->count();
+    }
+    public function TotalCheckInByDay($userId = null, $from = null, $to = null)
+    {
+        $query = $this->model->newQuery();
+        if ($userId) {
+            $query->where('user_id', $userId);
+        }
+        if ($from) {
+            $query->where('day', '>=', $from);
+        }
+        if ($to) {
+            $query->where('day', '<=', $to);
+        }
+        return $query->groupBy('day')->select('day', DB::Raw('count(0) as total'))->pluck('total', 'day');
     }
 }

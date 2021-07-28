@@ -43,11 +43,49 @@ class DashboardRepository
         $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
         return $dashboardInfo;
     }
+    private function getChartUserCheckinInfo()
+    {
+        $labels = [];
+        $dataset1 = [];
+        $dataset1['label'] = 'My Daily';
+        $dataset1['data'] = [];
+        $dataset1['borderColor'] = 'rgb(75, 192, 192)';
 
+        $data = $this->attendanceRepository->TotalCheckInByDay(auth()->user()->id);
+        foreach ($data as $key => $value) {
+            $dataset1['data'][] = $value;
+            $labels[$key] = $key;
+        }
+
+        $dataset2 = [];
+        $dataset2['label'] = 'User Daily';
+        $dataset2['data'] = [];
+        $dataset2['borderColor'] = 'rgb(20, 150, 192)';
+
+        $data = $this->attendanceRepository->TotalCheckInByDay();
+        foreach ($data as $key => $value) {
+            $dataset2['data'][] = $value;
+            $labels[$key] = $key;
+        }
+
+        $datasets = [];
+        $datasets[] = $dataset1;
+        $datasets[] = $dataset2;
+
+        $data = [];
+        $data['labels'] = array_values($labels);
+        $data['datasets'] = $datasets;
+
+        $chart = [];
+        $chart['type'] = 'line';
+        $chart['data'] = $data;
+        return $chart;
+    }
     public function GetData()
     {
         $dashboard = [];
         $dashboard['dashboardInfo'] = $this->getDashboardInfo();
+        $dashboard['chartUserCheckin'] = $this->getChartUserCheckinInfo();
         return $dashboard;
     }
 }

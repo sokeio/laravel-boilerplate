@@ -19,6 +19,9 @@ return [
         'roles' => 'Roles',
         'perrmissions' => 'Perrmissions'
     ],
+    'generator_builder'=>[
+        'title'=>'Generator Builder'
+    ],
     'attendances'=>[
         'title'=>'Checkin/out'
     ]

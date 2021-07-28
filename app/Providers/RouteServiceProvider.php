@@ -51,10 +51,6 @@ class RouteServiceProvider extends ServiceProvider
             Route::prefix(config('fast.admin_prefix'))->middleware(['web', 'auth'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/auth.php'));
-
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/generator.php'));
         });
     }
 

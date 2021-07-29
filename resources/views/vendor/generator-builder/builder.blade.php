@@ -428,7 +428,7 @@
                 };
                 data['_token'] = $('#token').val();
                 $.ajax({
-                    url: '{{ route("generator_builder.generator_builder_generate") }}',
+                    url: '{{ route("generator_builder.generate") }}',
                     // type: "POST",
                     method: "POST",
                     dataType: 'json',
@@ -479,7 +479,7 @@
                     _token: $('#rbToken').val()
                 };
                 $.ajax({
-                    url: '{{ route("generator_builder.generator_builder_rollback") }}',
+                    url: '{{ route("generator_builder.rollback") }}',
                     method: "POST",
                     dataType: 'json',
                     contentType: 'application/json',
@@ -530,7 +530,7 @@
             $('#schemaForm').on("submit", function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: '{{ route("generator_builder.generator_builder_generate_from_file") }}',
+                    url: '{{ route("generator_builder.from_file") }}',
                     type: 'POST',
                     data: new FormData($(this)[0]),
                     processData: false,

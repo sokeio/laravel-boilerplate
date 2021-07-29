@@ -20,8 +20,11 @@ Following things are ready to be used directly with AdminLTE Theme.
 - Generator Builder
 
 ## To Do
-- Timeline on profile
 - Change password
+
+## Plan Next
+- Timeline on profile
+- FastBlog base from FastLaravel
 
 ## Packages Installed
 - Laravel 8.12

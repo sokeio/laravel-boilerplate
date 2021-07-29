@@ -16,8 +16,8 @@ Following things are ready to be used directly with AdminLTE Theme.
 - Permission Manager
 - Checkin/out User
 - Chart Checkin/out of user on dashboard
-- Generator Builder
 - Update Profile
+- Generator Builder
 
 ## To Do
 - Timeline on profile

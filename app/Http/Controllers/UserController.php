@@ -6,6 +6,7 @@ use App\DataTables\UserDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Repositories\UserRepository;
 use App\Repositories\RoleRepository;
 use Flash;
@@ -159,5 +160,11 @@ class UserController extends AppBaseController
     {
         $user = auth()->user();
         return view('users.profile')->with('user', $user);
+    }
+    public function updateProfile(UpdateProfileRequest $request)
+    {
+        $id = auth()->user()->id;
+        $this->userRepository->update($request->only(['name', 'email']), $id);
+        return redirect(route('users.profile'));
     }
 }

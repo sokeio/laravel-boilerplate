@@ -165,6 +165,8 @@ class UserController extends AppBaseController
     {
         $id = auth()->user()->id;
         $this->userRepository->update($request->only(['name', 'email']), $id);
+
+        Flash::success('Update profile successfully.');
         return redirect(route('users.profile'));
     }
 }

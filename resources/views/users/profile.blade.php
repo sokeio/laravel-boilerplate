@@ -46,53 +46,11 @@
                                 <b>Friends</b> <a class="float-right">13,287</a>
                             </li>
                         </ul>
-
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                     </div>
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
 
-                <!-- About Me Box -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">About Me</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <strong><i class="fas fa-book mr-1"></i> Education</strong>
-
-                        <p class="text-muted">
-                            B.S. in Computer Science from the University of Tennessee at Knoxville
-                        </p>
-
-                        <hr>
-
-                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                        <p class="text-muted">Malibu, California</p>
-
-                        <hr>
-
-                        <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-                        <p class="text-muted">
-                            <span class="tag tag-danger">UI Design</span>
-                            <span class="tag tag-success">Coding</span>
-                            <span class="tag tag-info">Javascript</span>
-                            <span class="tag tag-warning">PHP</span>
-                            <span class="tag tag-primary">Node.js</span>
-                        </p>
-
-                        <hr>
-
-                        <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
             </div>
             <!-- /.col -->
             <div class="col-md-9">
@@ -100,7 +58,6 @@
                     <div class="card-header p-2">
                         <ul class="nav nav-pills">
                             <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Settings</a></li>
-                            <li class="nav-item"><a class="nav-link " href="#activity" data-toggle="tab">Timeline</a></li>
                         </ul>
                     </div><!-- /.card-header -->
                     <div class="card-body">
@@ -221,35 +178,28 @@
 
                             <div class="tab-pane active" id="settings">
                                 @include('adminlte-templates::common.errors')
+                                @include('flash::message')
                                 {!! Form::model($user, ['route' => ['users.updateProfile', $user->id], 'method' => 'patch']) !!}
+                                    <!-- Name Field -->
+                                    <div class="form-group row">
+                                        {!! Form::label('name', 'Name:',['class' => 'required col-sm-2 col-form-label']) !!}
 
-                                <div class="form-group col-sm-6">
-                                </div>
-
-                                <!-- Name Field -->
-                                <div class="form-group row">
-                                    {!! Form::label('name', 'Name:',['class' => 'required col-sm-2 col-form-label']) !!}
-
-                                    <div class="col-sm-10">
-                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                        <div class="col-sm-10">
+                                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                        </div>
                                     </div>
-                                </div>
-
-                                <!-- Email Field -->
-                                <div class="form-group col-sm-6">
-
-                                </div>
-                                <div class="form-group row">
-                                    {!! Form::label('email', 'Email:',['class' => 'required col-sm-2 col-form-label' ]) !!}
-                                    <div class="col-sm-10">
-                                        {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                    <!-- Email Field -->
+                                    <div class="form-group row">
+                                        {!! Form::label('email', 'Email:',['class' => 'required col-sm-2 col-form-label' ]) !!}
+                                        <div class="col-sm-10">
+                                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Update</button>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-danger">Update</button>
+                                        </div>
                                     </div>
-                                </div>
                                 {!! Form::close() !!}
                             </div>
                             <!-- /.tab-pane -->

@@ -6,6 +6,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Role;
+use PhpOffice\PhpSpreadsheet\Calculation\Financial\TreasuryBill;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -26,15 +27,15 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         $this->registerPolicies($gate);
+        $guest_perrmission = config('fast.guest_perrmission');
+        Gate::before(function ($user, $ability) use ($guest_perrmission) {
 
-        Gate::before(function ($user, $ability) {
+            if (in_array($ability, $guest_perrmission))
+                return true;
+
             if ($user->isSuperAdmin())
                 return true;
-            $perrmissions = explode('|', $ability);
-            foreach ($perrmissions as $item) {
-                if ($user->hasPermissionTo($item))
-                    return true;
-            }
+
             return null;
         });
     }

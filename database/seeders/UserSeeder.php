@@ -56,7 +56,6 @@ class UserSeeder extends Seeder
             'title' => 'Guest',
             'guard_name' => 'web'
         ]);
-        $roleGuest->givePermissionTo('dashboard');
         $userGuest = $this->userRepository->create([
             'name' => 'Guest',
             'email' => 'guest@fastlaravel.dev',
@@ -71,7 +70,6 @@ class UserSeeder extends Seeder
         ]);
         $usersPermissions = $this->permissionRepository->getListByName('users.%');
         $roleLeader->givePermissionTo($usersPermissions);
-        $roleLeader->givePermissionTo('dashboard');
         $userLeader = $this->userRepository->create([
             'name' => 'Leader',
             'email' => 'leader@fastlaravel.dev',

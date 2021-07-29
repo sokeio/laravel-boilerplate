@@ -25,8 +25,10 @@ class Authenticate extends Middleware
         $user = $request->user();
         // Like: users.index
         $route = app()->router->getCurrentRoute()->getName();
+
+        $guest_perrmission = config('fast.guest_perrmission');
         // Hasn't permission
-        if (!empty($user) && !$user->isSuperAdmin() && !empty($route) && !$user->hasPermissionTo($route)) {
+        if (!in_array($route, $guest_perrmission) && !empty($user) && !$user->isSuperAdmin() && !empty($route) && !$user->hasPermissionTo($route)) {
             return abort(403);
         }
 

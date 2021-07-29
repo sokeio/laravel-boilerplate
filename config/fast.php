@@ -7,5 +7,9 @@ return [
     'checkin_out' => 1,
     'key_checkin' => 'user_checkin_session',
     'key_checkout' => 'user_checkout_session',
-    'time_checkout' => 2
+    'time_checkout' => 2,
+    'guest_perrmission' => [
+        'dashboard',
+        'users.profile'
+    ]
 ];

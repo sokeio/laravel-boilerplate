@@ -40,7 +40,7 @@ $isUserActive = Request::is($urlAdmin.'*attendances*');
 </li>
 @endcan
 
-@can('users.index|roles.index|permissions.index')
+@canany(['users.index','roles.index','permissions.index'])
 @php
 $isUserActive = Request::is($urlAdmin.'*users*');
 $isRoleActive = Request::is($urlAdmin.'*roles*');

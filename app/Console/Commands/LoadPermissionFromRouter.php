@@ -51,9 +51,11 @@ class LoadPermissionFromRouter extends Command
             'password'
         ];
         $routeCollection = Route::getRoutes();
-
+        $guest_perrmissons = config('fast.guest_perrmission');
         foreach ($routeCollection as $value) {
             $name = $value->getName();
+            if (in_array($name, $guest_perrmissons)) continue;
+
             $arrName = explode('.', $name);
             $module = $arrName[0];
             $title = $name;

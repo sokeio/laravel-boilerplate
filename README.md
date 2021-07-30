@@ -23,7 +23,7 @@ Following things are ready to be used directly with AdminLTE Theme.
 ## To Do
 - Change password
 
-## Plan Next
+## Next Plan
 - Timeline on profile
 - FastBlog base from FastLaravel
 

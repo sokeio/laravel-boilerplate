@@ -10,6 +10,8 @@ return [
     'time_checkout' => 2,
     'guest_perrmission' => [
         'dashboard',
-        'users.profile'
+        'users.profile',
+        'users.showUpdateProfile',
+        'users.updateProfile'
     ]
 ];

@@ -17,8 +17,8 @@ Following things are ready to be used directly with AdminLTE Theme.
 - Checkin/out User
 - Chart Checkin/out of user on dashboard
 - Update Profile
-- Generator Builder
 - Multi Languages
+- Generator Builder
 
 ## To Do
 - Change password

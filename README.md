@@ -21,9 +21,9 @@ Following things are ready to be used directly with AdminLTE Theme.
 - Update Profile
 - Multi Languages
 - Generator Builder
+- Change password
 
 ## To Do
-- Change password
 
 ## Next Plan
 - Timeline on profile

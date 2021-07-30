@@ -11,6 +11,7 @@ use App\Repositories\UserRepository;
 use App\Repositories\RoleRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Hash;
 use Response;
 
 class UserController extends AppBaseController
@@ -164,7 +165,11 @@ class UserController extends AppBaseController
     public function updateProfile(UpdateProfileRequest $request)
     {
         $id = auth()->user()->id;
-        $this->userRepository->update($request->only(['name', 'email']), $id);
+        $data = $request->only(['name', 'email']);
+        if ($request->get('password_new') && $request->get('password_new') != "") {
+            $data['password'] = Hash::make($request->get('password_new'));
+        }
+        $this->userRepository->update($data, $id);
 
         Flash::success('Update profile successfully.');
         return redirect(route('users.profile'));

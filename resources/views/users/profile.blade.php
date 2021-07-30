@@ -180,26 +180,33 @@
                                 @include('adminlte-templates::common.errors')
                                 @include('flash::message')
                                 {!! Form::model($user, ['route' => ['users.updateProfile', $user->id], 'method' => 'patch']) !!}
-                                    <!-- Name Field -->
-                                    <div class="form-group row">
-                                        {!! Form::label('name', 'Name:',['class' => 'required col-sm-2 col-form-label']) !!}
+                                <!-- Name Field -->
+                                <div class="form-group row">
+                                    {!! Form::label('name', 'Name:',['class' => 'required col-sm-2 col-form-label']) !!}
 
-                                        <div class="col-sm-10">
-                                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                                        </div>
+                                    <div class="col-sm-10">
+                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
                                     </div>
-                                    <!-- Email Field -->
-                                    <div class="form-group row">
-                                        {!! Form::label('email', 'Email:',['class' => 'required col-sm-2 col-form-label' ]) !!}
-                                        <div class="col-sm-10">
-                                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
-                                        </div>
+                                </div>
+                                <!-- Email Field -->
+                                <div class="form-group row">
+                                    {!! Form::label('email', 'Email:',['class' => 'required col-sm-2 col-form-label' ]) !!}
+                                    <div class="col-sm-10">
+                                        {!! Form::text('email', null, ['class' => 'form-control']) !!}
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Update</button>
-                                        </div>
+                                </div>
+                                <!-- Password Field -->
+                                <div class="form-group row">
+                                    {!! Form::label('password_new', 'Passowrd:',['class' => 'col-sm-2 col-form-label' ]) !!}
+                                    <div class="col-sm-10">
+                                        {!! Form::text('password_new', null, ['class' => 'form-control']) !!}
                                     </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-sm-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Update</button>
+                                    </div>
+                                </div>
                                 {!! Form::close() !!}
                             </div>
                             <!-- /.tab-pane -->

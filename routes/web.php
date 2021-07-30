@@ -19,11 +19,8 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controller
 Auth::routes();
 
 Route::get('/', function () {
-    return redirect(route('home'));
+    return redirect(route('dashboard'));
 });
-Route::get('/home', [
-    HomeController::class, 'index'
-])->name('home');
 
 Route::get('/checkOnline', function (App\Repositories\AttendanceRepository $attendanceRepo) {
     if (Auth::check()) {

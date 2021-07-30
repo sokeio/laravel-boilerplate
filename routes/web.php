@@ -15,22 +15,18 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 Auth::routes();
 
+Route::get('/', function () {
+    return redirect(route('home'));
+});
 Route::get('/home', [
     HomeController::class, 'index'
 ])->name('home');
 
 Route::get('/checkOnline', function (App\Repositories\AttendanceRepository $attendanceRepo) {
-    if(Auth::check()){
-
+    if (Auth::check()) {
     }
     return $attendanceRepo->CountUserOnline();
 })->name('checkOnline');
-
-
-Route::resource('permissions', App\Http\Controllers\PermissionController::class);

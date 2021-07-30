@@ -1,3 +1,5 @@
+## Welcome to FastLaravel
+
 # Laravel Boilerplate for AdminLTE Theme
 
 Laravel Boilerplate with [AdminLTE](https://adminlte.io/) Theme with [FastLaravel](https://github.com/FastXGroup/FastLaravel).
@@ -51,4 +53,6 @@ Following things are ready to be used directly with AdminLTE Theme.
 - Leader: leader@fastlaravel.dev/123@123
 
 Once everything is installed, you are ready to go with generator.
+
+Contact: nguyenvanhaudev@gmail.com
 

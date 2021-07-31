@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>Create Attendance</h1>
+                    <h1>@lang('attendances.header.create')</h1>
                 </div>
             </div>
         </div>
@@ -28,8 +28,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('attendances.index') }}" class="btn btn-default">Cancel</a>
+                {!! Form::submit(__('attendances.button.save'), ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('attendances.index') }}" class="btn btn-default">@lang('attendances.button.cancel')</a>
             </div>
 
             {!! Form::close() !!}

@@ -55,7 +55,7 @@ class AttendanceController extends AppBaseController
 
         $attendance = $this->attendanceRepository->create($input);
 
-        Flash::success('Attendance saved successfully.');
+        Flash::success(__('attendances.message.create_success'));
 
         return redirect(route('attendances.index'));
     }
@@ -72,7 +72,7 @@ class AttendanceController extends AppBaseController
         $attendance = $this->attendanceRepository->find($id);
 
         if (empty($attendance)) {
-            Flash::error('Attendance not found');
+            Flash::error(__('attendances.message.not_found'));
 
             return redirect(route('attendances.index'));
         }
@@ -92,7 +92,7 @@ class AttendanceController extends AppBaseController
         $attendance = $this->attendanceRepository->find($id);
 
         if (empty($attendance)) {
-            Flash::error('Attendance not found');
+            Flash::error(__('attendances.message.not_found'));
 
             return redirect(route('attendances.index'));
         }
@@ -113,14 +113,14 @@ class AttendanceController extends AppBaseController
         $attendance = $this->attendanceRepository->find($id);
 
         if (empty($attendance)) {
-            Flash::error('Attendance not found');
+            Flash::error(__('attendances.message.not_found'));
 
             return redirect(route('attendances.index'));
         }
 
         $attendance = $this->attendanceRepository->update($request->all(), $id);
 
-        Flash::success('Attendance updated successfully.');
+        Flash::success(__('attendances.message.update_success'));
 
         return redirect(route('attendances.index'));
     }
@@ -137,14 +137,14 @@ class AttendanceController extends AppBaseController
         $attendance = $this->attendanceRepository->find($id);
 
         if (empty($attendance)) {
-            Flash::error('Attendance not found');
+            Flash::error(__('attendances.message.not_found'));
 
             return redirect(route('attendances.index'));
         }
 
         $this->attendanceRepository->delete($id);
 
-        Flash::success('Attendance deleted successfully.');
+        Flash::success(__('attendances.message.delete_success'));
 
         return redirect(route('attendances.index'));
     }

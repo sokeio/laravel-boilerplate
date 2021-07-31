@@ -12,18 +12,18 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'dashboard'=>'Dashboard',
+    'dashboard' => 'ダッシュボード',
     'user' => [
-        'title'=>'Security',
-        'users' => 'Users',
-        'roles' => 'Roles',
-        'permissions' => 'permissions'
+        'title' => '安全',
+        'users' => 'ユーザー',
+        'roles' => '役割',
+        'permissions' => '権限'
     ],
-    'generator_builder'=>[
-        'title'=>'Generator Builder'
+    'generator_builder' => [
+        'title' => 'Generator Builder'
     ],
-    'attendances'=>[
-        'title'=>'Checkin/out'
+    'attendances' => [
+        'title' => '計時'
     ]
 
 

@@ -13,18 +13,18 @@ return [
     |
     */
     'module' => [
-        'dashboard' => 'Dashboard',
+        'dashboard' => 'Bảng điều khiển',
         'home' => 'Home',
-        'users' => 'User',
-        'roles' => 'Role',
-        'permissions' => 'Permission',
-        'attendances'=>'Checkin/out',
+        'users' => 'Tài khoản',
+        'roles' => 'Vai trò',
+        'permissions' => 'Quyền',
+        'attendances'=>'Chấm công',
         'generator_builder'=>'Generator Builder'
     ],
     'permission' => [
-        'home' => 'Access Home Page',
         'users' => [
-            'index' => 'Access User Page'
+            'index' => 'Thông tin tài khoản',
+            'create' => 'Tạo tài khoản'
         ],
         'generator_builder'=>[
             'index' => 'Access Generator Builder',

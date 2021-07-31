@@ -5,15 +5,11 @@ return [
         'flag-icon' => 'us'
     ],
     'vi' => [
-        'display' => 'Việt Nam',
+        'display' => 'Tiếng việt',
         'flag-icon' => 'vn'
     ],
-    'fr' => [
-        'display' => 'Français',
-        'flag-icon' => 'fr'
-    ],
-    'es' => [
-        'display' => 'Spanish',
-        'flag-icon' => 'es'
+    'ja' => [
+        'display' => 'Japanese',
+        'flag-icon' => 'jp'
     ]
 ];

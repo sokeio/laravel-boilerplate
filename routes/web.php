@@ -20,7 +20,7 @@ Auth::routes();
 
 Route::get('/', function () {
     return redirect(route('dashboard'));
-});
+})->name('home');
 
 Route::get('/checkOnline', function (App\Repositories\AttendanceRepository $attendanceRepo) {
     if (Auth::check()) {

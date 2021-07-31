@@ -17,13 +17,13 @@ return [
         'title'=>'Bảo mật',
         'users' => 'Tài khoản',
         'roles' => 'Vai trò',
-        'perrmissions' => 'Quyền'
+        'permissions' => 'Quyền'
     ],
     'generator_builder'=>[
         'title'=>'Generator Builder'
     ],
     'attendances'=>[
-        'title'=>'Checkin/out'
+        'title'=>'Chấm công'
     ]
 
 

@@ -12,6 +12,6 @@
 */
 
 return [
-    'next'     => 'Trang trước &raquo;',
-    'previous' => '&laquo; Trang sau',
+    'next'     => '次へ &raquo;',
+    'previous' => '&laquo; 前へ',
 ];

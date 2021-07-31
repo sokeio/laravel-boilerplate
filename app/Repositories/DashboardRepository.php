@@ -53,7 +53,7 @@ class DashboardRepository
 
         $data = $this->attendanceRepository->TotalCheckInByDay(auth()->user()->id);
         foreach ($data as $key => $value) {
-            $dataset1['data'][] = $value;
+            $dataset1['data'][$key] = $value;
             $labels[$key] = $key;
         }
 
@@ -64,7 +64,7 @@ class DashboardRepository
 
         $data = $this->attendanceRepository->TotalCheckInByDay();
         foreach ($data as $key => $value) {
-            $dataset2['data'][] = $value;
+            $dataset2['data'][$key ] = $value;
             $labels[$key] = $key;
         }
 

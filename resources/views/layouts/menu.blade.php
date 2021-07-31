@@ -80,7 +80,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
             <a href="{{ route('permissions.index') }}" class="nav-link {{ $isPermissionActive ? 'active' : '' }}">
                 <i class="nav-icon fas fa-shield-alt"></i>
                 <p>
-                    @lang('menu.user.perrmissions')
+                    @lang('menu.user.permissions')
                 </p>
             </a>
         </li>

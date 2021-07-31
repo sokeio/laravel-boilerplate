@@ -18,7 +18,7 @@ return [
         'edit' => 'Edit Checkin/out',
         'detail' => 'Checkin/out Details'
     ],
-    'field' => [
+    'fields' => [
         'user_id' => 'Full name',
         'present' => 'Present',
         'day' => 'Day',

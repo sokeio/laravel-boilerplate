@@ -8,11 +8,8 @@ Youtube: https://www.youtube.com/watch?v=tk9CJU9W7BU
 
 Following things are ready to be used directly with AdminLTE Theme.
 
-- Signup
-- Login
-- Forgot Password
-- Password Reset
-- Home Layout with Sidebar
+- Auth(Signup,Login,Forgot Password,Password Reset)
+- Dashboard
 - User Manager
 - Role Manager
 - Permission Manager

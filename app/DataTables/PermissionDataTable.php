@@ -42,17 +42,18 @@ class PermissionDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['width' => '120px', 'printable' => false, 'title' => __('datatables.bAction')])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => false,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
 
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
+
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.bcreate')],
+                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.bexport')],
+                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.bprint')],
+                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.breset')],
                     [
                         'text' => '<i class="fas fa-shield-alt"></i> ' . 'Load from router',
                         'action' => "
@@ -71,6 +72,7 @@ class PermissionDataTable extends DataTable
                         'className' => 'btn btn-default btn-sm no-corner'
                     ],
                 ],
+                'language' => __('datatables')
             ]);
     }
     protected $actions = ['create', 'export', 'print', 'reset', 'loadPermission'];

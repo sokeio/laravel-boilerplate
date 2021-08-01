@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | attendances Language Lines
+    | permissions Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during attendances for various
@@ -13,10 +13,10 @@ return [
     |
     */
     'header' => [
-        'index' => 'Checkin/out',
-        'create' => 'Create Checkin/out',
-        'edit' => 'Edit Checkin/out',
-        'detail' => 'Checkin/out Details'
+        'index' => 'Permissions',
+        'create' => 'Create permission',
+        'edit' => 'Edit permission',
+        'detail' => 'permission Details'
     ],
     'fields' => [
         'user_id' => 'Full name',
@@ -33,10 +33,10 @@ return [
         'back'=>'Back'
     ],
     'message' => [
-        'not_found' => 'Checkin/out not found',
+        'not_found' => 'permission not found',
         'confirm_delete' => 'Are you sure?',
-        'create_success' => 'Checkin/out saved successfully.',
-        'update_success' => 'Checkin/out updated successfully.',
-        'delete_success' => 'Checkin/out deleted successfully.'
+        'create_success' => 'Permission saved successfully.',
+        'update_success' => 'Permission updated successfully.',
+        'delete_success' => 'Permission deleted successfully.'
     ]
 ];

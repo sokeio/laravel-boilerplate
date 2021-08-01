@@ -13,12 +13,12 @@ return [
     |
     */
     'header' => [
-        'list' => 'Chấm công',
+        'index' => 'Chấm công',
         'create' => 'Tạo chấm công',
         'edit' => 'Cập nhật chấm công',
         'detail' => 'Chi tiết chấm công'
     ],
-    'field' => [
+    'fields' => [
         'user_id' => 'Họ tên',
         'present' => 'Hiện tại',
         'day' => 'Ngày',

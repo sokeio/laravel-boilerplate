@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | attendances Language Lines
+    | dashboards Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during attendances for various
@@ -13,10 +13,7 @@ return [
     |
     */
     'header' => [
-        'index' => 'Checkin/out',
-        'create' => 'Create Checkin/out',
-        'edit' => 'Edit Checkin/out',
-        'detail' => 'Checkin/out Details'
+        'index' => 'Bảng điều khiển'
     ],
     'fields' => [
         'user_id' => 'Full name',
@@ -29,8 +26,8 @@ return [
         'add_new' => 'Add New',
         'update' => 'Update',
         'save' => 'Save',
-        'cancel'=>'Cancel',
-        'back'=>'Back'
+        'cancel' => 'Cancel',
+        'back' => 'Back'
     ],
     'message' => [
         'not_found' => 'Checkin/out not found',

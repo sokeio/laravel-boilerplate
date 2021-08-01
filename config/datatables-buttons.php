@@ -1,5 +1,4 @@
 <?php
-
 return [
     /*
      * Namespaces used by the generator.
@@ -66,7 +65,7 @@ return [
             'print',
             'reset',
             'reload',
-        ],
+        ]
     ],
 
     /*

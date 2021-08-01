@@ -42,18 +42,19 @@ class AttendanceDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['width' => '120px', 'printable' => false, 'title' => __('datatables.bAction')])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.bcreate')],
+                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.bexport')],
+                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.bprint')],
+                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.breset')],
+                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner','title' => __('datatables.breload')],
                 ],
+                'language' => __('datatables')
             ]);
     }
 
@@ -67,11 +68,11 @@ class AttendanceDataTable extends DataTable
         return [
             'id' => ['searchable' => false],
             'ip',
-            'user_name' => ['data' => 'user_name', 'name' => 'user.name'],
-            'present',
-            'day' => ['data' => 'day_text', 'name' => 'day'],
-            'time_in',
-            'time_out'
+            'user_name' => ['title' => __('models/attendances.fields.user_id'), 'data' => 'user_name', 'name' => 'user.name'],
+            'present' => ['title' => __('models/attendances.fields.user_id')],
+            'day' => ['title' => __('models/attendances.fields.day'), 'data' => 'day_text', 'name' => 'day'],
+            'time_in' => ['title' => __('models/attendances.fields.time_in')],
+            'time_out' => ['title' => __('models/attendances.fields.time_out')]
         ];
     }
 

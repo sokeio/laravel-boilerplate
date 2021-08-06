@@ -23,7 +23,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/checkOnline', function (App\Repositories\AttendanceRepository $attendanceRepo) {
-    if (Auth::check()) {
-    }
+    if (Auth::check()) { }
     return $attendanceRepo->CountUserOnline();
 })->name('checkOnline');

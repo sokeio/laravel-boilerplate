@@ -28,7 +28,9 @@ return [
         ],
         'generator_builder'=>[
             'index' => 'Access Generator Builder',
-            'field_template'=>'Access File Template'
+            'field_template'=>'Access File Template',
+            'from_file'=>'From File2',
+            'rollback'=>'Rollback2'
         ]
     ],
 

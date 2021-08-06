@@ -34,7 +34,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         Artisan::call('config:clear');
-        $exitCode = Artisan::call('router:permission');
+        // load permission from router name
+     //  $exitCode = Artisan::call('router:permission');
 
         // Supper Admin
         $roleSupperAdmin = $this->roleRepository->create([

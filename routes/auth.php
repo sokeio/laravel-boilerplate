@@ -33,3 +33,6 @@ Route::post(
     'generator_builder/generate-from-file',
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('generator_builder.from_file');
+
+
+Route::resource('fileUploads', App\Http\Controllers\FileUploadController::class);

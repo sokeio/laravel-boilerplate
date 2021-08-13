@@ -88,3 +88,11 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </ul>
 </li>
 @endcan
+@can('fileUploads.index')
+<li class="nav-item">
+    <a href="{{ route('fileUploads.index') }}" class="nav-link {{ Request::is('fileUploads*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-file-alt"></i>
+        <p>@lang('models/fileUploads.plural')</p>
+    </a>
+</li>
+@endcan

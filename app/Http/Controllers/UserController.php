@@ -58,7 +58,8 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
-
+        $input['password'] = Hash::make($request->password);
+        
         $user = $this->userRepository->create($input);
 
         $role_data = $request->get('role_data');

@@ -17,10 +17,10 @@
     </div>
 </div>
 @if(!isset($user))
-<!-- Passowrd Field -->
+<!-- Password Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('passowrd', 'Passowrd:',['class' => 'required']) !!}
-    {!! Form::password('passowrd', ['class' => 'form-control']) !!}
+    {!! Form::label('password', 'Password:',['class' => 'required']) !!}
+    {!! Form::password('password', ['class' => 'form-control']) !!}
 </div>
 @endif
 @push('page_scripts')

@@ -1,8 +1,7 @@
-<p align="center"><img style="width:60px; border-radius: 3px;" src="./bytechasia_logo.jpg">
-<img src="https://laravel.com/assets/img/components/logo-laravel.svg">
+<p align="center"><img style="width:60px; border-radius: 3px;" src="./sokeio.webp">
 </p>
 
-# Laravel Boilerplate
+# Sokeio Laravel Boilerplate
 
 Touch Star Follow package: https://github.com/sokeio/framework
 

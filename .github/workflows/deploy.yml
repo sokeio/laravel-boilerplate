@@ -40,7 +40,7 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: "8.0"
+          php_version: "8.3"
           php_extensions: json curl ctype dom fileinfo iconv libxml mbstring simplexml xml xmlreader xmlwriter zip zlib gd
         env:
           dev: no

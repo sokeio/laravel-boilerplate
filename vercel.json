@@ -1,21 +1,20 @@
 {
     "version": 2,
-    "framework": null,
-    "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.6.0" }
-    },
+    "builds": [
+        { "src": "/api/index.php", "use": "vercel-php@0.7.3" },
+        { "src": "/public/**", "use": "@vercel/static" }
+    ],
     "routes": [
+        {
+            "src": "/(Platform|storage)/(.*)",
+            "dest": "public/$1/$2"
+        },
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
     ],
     "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "true",
-        "APP_URL": "https://your.url.from.vercel.app",
-        "APP_KEY": "add API key here from your .env file",
-
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",

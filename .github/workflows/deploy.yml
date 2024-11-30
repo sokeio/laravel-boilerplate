@@ -1,0 +1,58 @@
+# This is a basic workflow to help you get started with Actions
+
+name: sokeio_deploy
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Copy deploy_gitignore to .gitignore
+        run: |
+          mv .gitignore .gitignore.bk
+          cp .env.example .env
+      - name: npm install
+        run: |
+          npm i
+      - name: npm run prod
+        run: |
+          npm run prod
+      - name: composer install
+        run: |
+          rm -fR .github
+          rm -fR  vendor composer.lock
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.0"
+          php_extensions: json curl ctype dom fileinfo iconv libxml mbstring simplexml xml xmlreader xmlwriter zip zlib gd
+        env:
+          dev: no
+
+      - name: remove .git
+        run: |
+          rm -R .git
+      - name: push git branch kit
+        uses: sokeio/push-git-branch-kit@main
+        env:
+          REPO: self
+          BRANCH: main_deploy # The branch name where you want to push the assets
+          FOLDER: ./ # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+          MESSAGE: "DEPLOY To BRANCH main_deploy" # The commit message

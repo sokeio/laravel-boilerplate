@@ -30,9 +30,9 @@ jobs:
       - name: npm install
         run: |
           npm i
-      - name: npm run prod
+      - name: npm run build
         run: |
-          npm run prod
+          npm run build
       - name: composer install
         run: |
           rm -fR .github

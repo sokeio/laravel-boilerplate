@@ -36,7 +36,7 @@ jobs:
       - name: composer install
         run: |
           rm -fR .github
-          rm -fR  vendor composer.lock
+          rm -fR  vendor composer.lock node_modules
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
@@ -45,9 +45,9 @@ jobs:
         env:
           dev: no
 
-      - name: remove .git
-        run: |
-          rm -R .git
+    #   - name: remove .git
+    #     run: |
+    #       rm -R .git
       - name: push git branch kit
         uses: sokeio/push-git-branch-kit@main
         env:

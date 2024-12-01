@@ -54,5 +54,5 @@ jobs:
           REPO: self
           BRANCH: main_deploy # The branch name where you want to push the assets
           FOLDER: ./ # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.SOKEIO_TOKEN }}# GitHub will automatically add this - you don't need to bother getting a token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}# GitHub will automatically add this - you don't need to bother getting a token
           MESSAGE: "DEPLOY To BRANCH main_deploy" # The commit message
